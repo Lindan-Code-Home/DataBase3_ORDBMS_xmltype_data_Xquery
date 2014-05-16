@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="ratingtype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-5]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="review">
+		<xs:sequence>
+			<xs:element name="Book_Title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Rating" type="ratingtype" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Reviewer" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Review_Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Review_Date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			
+		</xs:sequence>
+		<xs:attribute name="Review_ID" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="reviews">
+			<xs:sequence>
+				<xs:element name="Review" type="review" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Reviews" type="reviews"/>
+</xs:schema>
